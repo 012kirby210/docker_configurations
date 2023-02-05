@@ -1,0 +1,19 @@
+services:
+  website:
+    image: php8
+    container_name: my.awesome.container
+    volumes: 
+      - /app.root/:/var/www/html
+    ports:
+      - "8080:80"
+      - "443:443"
+
+  database:
+    image: mariadb:10.9
+    container_name: database.my.awesome.container
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "8306:3306"
+    volumes:
+      - ../database:/var/lib/mysql
